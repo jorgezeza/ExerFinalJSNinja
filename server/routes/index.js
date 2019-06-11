@@ -14,9 +14,15 @@ router.post('/', function(req, res) {
     brandModel: req.body.brandModel,
     year: req.body.year,
     plate: req.body.plate,
-    color: req.body.color 
+    color: req.body.color
   });
-  console.log(data);
+  res.json({ message: 'success' });
+});
+
+router.delete('/', function(req, res) {
+  data = data.filter(function(car) {
+    return car.plate !== req.body.plate;
+  });
   res.json({ message: 'success' });
 });
 
